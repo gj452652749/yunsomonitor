@@ -1,0 +1,20 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":1},
+  "initArgs":[
+    "defaults",[
+      "config","data-config.xml"]],
+  "command":"status",
+  "status":"idle",
+  "importResponse":"",
+  "statusMessages":{
+    "Total Requests made to DataSource":"2",
+    "Total Rows Fetched":"84",
+    "Total Documents Processed":"40",
+    "Total Documents Skipped":"0",
+    "Full Dump Started":"2017-01-21 18:35:07",
+    "":"Indexing completed. Added/Updated: 40 documents. Deleted 0 documents.",
+    "Committed":"2017-01-21 18:35:07",
+    "Total Documents Failed":"44",
+    "Time taken":"0:0:0.403"}}

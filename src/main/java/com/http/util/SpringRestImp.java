@@ -1,0 +1,46 @@
+/*
+ * spring版本的实现
+ */
+package com.http.util;
+
+import java.io.IOException;
+import java.net.URI;
+
+import org.apache.http.HttpHost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+public class SpringRestImp implements HttpRest{
+	private RestTemplate restTemplate =null;
+
+	
+	public SpringRestImp() {
+		super();
+		// TODO Auto-generated constructor stub
+		restTemplate = new RestTemplate(); 
+		HttpHost proxy = new HttpHost("207.87.85.3", 8080);
+		DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
+		CloseableHttpClient httpclient=HttpClientBuilder.create()
+				.setMaxConnTotal(800)
+				.setMaxConnPerRoute(800)
+				.setRoutePlanner(routePlanner)
+				.build();
+		
+		restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpclient) );
+	}
+
+
+	public String get(String url) {
+		// TODO Auto-generated method stub
+		String json=null;
+		json=restTemplate.getForObject(url, String.class);//此处可能会有异常
+		return json;
+	}
+
+}
